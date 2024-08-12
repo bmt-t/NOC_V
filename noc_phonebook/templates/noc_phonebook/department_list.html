@@ -1,0 +1,14 @@
+{% extends 'noc_phonebook/base.html' %}
+
+{% block title %}Danh Sách Phòng Ban{% endblock %}
+
+{% block nav %}
+  {% for department in departments %}
+    <li><a href="{% url 'department_details' department.id %}">{{ department.name }}</a></li>
+  {% endfor %}
+{% endblock %}
+
+{% block content %}
+  <h1>Chào mừng đến với danh sách phòng ban</h1>
+  <p>Vui lòng chọn phòng ban từ danh sách bên trái để xem chi tiết.</p>
+{% endblock %}

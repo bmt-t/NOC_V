@@ -1,0 +1,36 @@
+<!-- myapp/templates/myapp/issue_details.html -->
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <title>Chi Tiết Sự Cố: {{ issue.name }}</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  {% load static %}
+  <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+</head>
+<body>
+  <header>
+    <h2>Chi Tiết Sự Cố</h2>
+  </header>
+
+  <section>
+    <article>
+      <h1>Chi tiết sự cố: {{ issue.name }}</h1>
+      <p>{{ issue.description }}</p>
+
+      <h2>Kỹ thuật viên liên quan</h2>
+      <ul>
+        {% for tech_issue in tech_issues %}
+          <li>{{ tech_issue.technical.firstname }} {{ tech_issue.technical.lastname }} - {{ tech_issue.technical.phone }}</li>
+        {% empty %}
+          <li>Không có kỹ thuật viên nào liên quan.</li>
+        {% endfor %}
+      </ul>
+    </article>
+  </section>
+
+  <footer>
+    <p>Chân Trang</p>
+  </footer>
+</body>
+</html>

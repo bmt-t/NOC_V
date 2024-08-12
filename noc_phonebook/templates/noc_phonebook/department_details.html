@@ -1,0 +1,21 @@
+{% extends 'noc_phonebook/base.html' %}
+
+{% block title %}Chi Tiết Phòng Ban{% endblock %}
+
+{% block nav %}
+  {% for department in abc %}
+    <li><a href="{% url 'department_details' department.id %}">{{ department.name }}</a></li>
+  {% endfor %}
+{% endblock %}
+
+{% block content %}
+  <h1>Chi Tiết Phòng Ban: {{ department.name }}</h1>
+  <p>{{ department.description }}</p>
+  
+  <h2>Danh Sách Kỹ Thuật Viên</h2>
+  <ul>
+    {% for technical in technicals %}
+      <li>{{ technical.firstname }} {{ technical.lastname }} - {{ technical.phone }}</li>
+    {% endfor %}
+  </ul>
+{% endblock %}
